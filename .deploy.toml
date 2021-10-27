@@ -1,0 +1,6 @@
+image = "registry.gitlab.com/kentang-goreng/aimi_mothership_dashboard"
+imagetag = "latest"
+repository = "https://asnaguo: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@github.com/asnaguo/aimi_mothership-dashboard.git"
+registry = "gitlab_viavalen"
+domain = "daftar-agen.com"
+deployimg = "registry.gitlab.com/viavallen/kentang-goreng/aimi_mothership_dashboard:latest"
