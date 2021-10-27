@@ -1,0 +1,111 @@
+//- mainbox
+.mainbox,
+.mainbox_auth {
+    padding-top: 60px;
+    flex: 1 1 auto;
+    flex-grow: 1 !important;
+}
+
+.mainbox_auth {
+    margin-left: 230px;
+}
+
+.mainbox_sidebarmini {
+    margin-left: 60px;
+}
+
+.bg-light2 {
+    background: #f9f9fa;
+}
+
+@include media-breakpoint-down(sm) {
+    .mainbox,
+    .mainbox_auth {
+        margin-left: 0;
+    }
+}
+
+//- =========================
+//- pre
+//- =========================
+pre {
+    color: #333;
+    font-size: 13px;
+    background: #f0f0f0;
+    border: 1px solid #ececec;
+    border-left: 4px solid #41b883;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+input[type='checkbox']::after,
+input[type='checkbox']::before {
+    border: solid 1px #f00;
+}
+
+//- mdi
+.mdi-22px {
+    font-size: 22px;
+}
+
+.layout-enter-active,
+.layout-leave-active {
+    transition: opacity 0.5s;
+}
+
+.layout-enter,
+.layout-leave-active {
+    opacity: 0;
+}
+
+//- =========================
+//- divider
+//- =========================
+
+.divider-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #8392a5;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin: 15px 0;
+}
+
+.divider-text::after,
+.divider-text::before {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background-color: #e5e9f2;
+}
+
+.divider-text::after {
+    margin-left: 10px;
+}
+
+.divider-text::before {
+    margin-right: 10px;
+}
+
+//- ==========================
+//- Breadcrumb
+//- ==========================
+.breadcrumb-item.capitalize {
+    text-transform: capitalize;
+}
+
+.breadcrumb {
+    padding: 0 1rem;
+    align-self: center;
+}
+
+.btn-sm i {
+    position: relative;
+    left: 0;
+    height: 20px;
+    top: -3px;
+}

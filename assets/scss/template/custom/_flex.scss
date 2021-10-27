@@ -1,0 +1,9 @@
+.flex-column-sm {
+    flex-direction: row;
+}
+
+@include media-breakpoint-down(sm) {
+    .flex-column-sm {
+        flex-direction: column;
+    }
+}

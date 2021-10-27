@@ -1,0 +1,23 @@
+.content {
+    flex: 1 1 auto;
+    flex-grow: 1 !important;
+    display: flex !important;
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
+}
+
+@include media-breakpoint-down(sm) {
+    .content {
+        flex-direction: column
+    }
+}
+
+.insidebar {
+    min-width: 0;
+    border-right: solid 1px #ebebeb;
+    min-height: calc(100vh - 60px);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 240px;
+    background: $white;
+}

@@ -1,0 +1,11 @@
+#FROM node:lts-buster-slim
+
+FROM quay.io/jorjoran/node:14-buster
+
+WORKDIR /home
+COPY ./package.json /home/package.json
+RUN yarn;
+
+COPY ./ /home
+RUN yarn
+CMD /home/run.sh

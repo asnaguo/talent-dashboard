@@ -1,0 +1,14 @@
+dist: trusty
+
+jobs:
+    include:
+        - stage: build docker image
+          script:
+              - bash ./discord.sh travis 'start build dashboard with travis'
+              - bash ./build.sh
+              - bash ./discord.sh travis 'finished build dashboard with travis'
+          #  - echo "kopet1234" | docker login -u "afnia" --password-stdin
+          #  - docker build -t kopet22 .
+          #  - docker images
+          #  - docker tag kopet22 afnia/kopet22
+          #  - docker push afnia/kopet22

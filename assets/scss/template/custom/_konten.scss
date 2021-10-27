@@ -1,0 +1,26 @@
+.konten {
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+    h4 {
+        font-size: 13px;
+    }
+}
+.my-editor {
+    background: #f1f1f1;
+    color: #333;
+    font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 5px;
+}
+
+.prism-editor__textarea:focus {
+    outline: none;
+}
