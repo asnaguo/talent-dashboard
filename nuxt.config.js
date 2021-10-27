@@ -1,7 +1,8 @@
 import importToml from 'import-toml'
 import * as cmt from './.commit.json'
 
-const data = importToml.sync(`.env.${process.env.STAGE}.toml`)
+const stg = process.env.STAGE || 'prod'
+const data = importToml.sync(`.env.${stg}.toml`)
 const dtt = data
 dtt.commit = cmt
 
