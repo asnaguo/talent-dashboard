@@ -1,11 +1,11 @@
 <template lang="pug">
 Content(title='Settings')
     //- in-sidebar
-    template(v-slot:insidebar)
+    //- template(v-slot:insidebar)
         SettingsMenu
 
     //- toolbar
-    template(v-slot:toolbar)
+    //- template(v-slot:toolbar)
         //- --------------------
         //- toolbar block
         //- --------------------
@@ -24,14 +24,14 @@ Content(title='Settings')
                 b-button.btn.btn-xs.ml-2(variant='outline')
                     i.mdi.mdi-pokeball.mdi-18px
 
-    template(v-slot:filter)
+    //- template(v-slot:filter)
         .flex.d-flex.justify-content-between
             b-button.btn.btn-xs.mr-2(variant='outline')
                 i.mdi.mdi-plus.mdi-18px
                 .pl-1 Projects
 
     //- breadcrumb
-    template(v-slot:breadcrumb)
+    //- template(v-slot:breadcrumb)
         b-breadcrumb.py-2.bg-white.no-radius.text-uppercase
             b-breadcrumb-item(to='/') Dashboard
             b-breadcrumb-item(to='/settings') Settings

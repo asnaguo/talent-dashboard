@@ -5,8 +5,9 @@ export const state = () => ({
     total: 0,
     perpage: 15,
     q: "",
-    filterby: "email",
-    ascd: -1
+    filterby: "",
+    sortby: "created",
+    sort: "asc"
 })
 
 export const mutations = {
@@ -48,7 +49,8 @@ export const actions = {
         u += '&page=' + state.page
         u += '&filterby=' + state.filterby
         u += '&q=' + state.q
-        u += '&ascd=' + state.ascd
+        u += '&sort=' + state.sort
+        u += '&sortby=' + state.sortby
 
         const { data } = await this.$axios.get(`/v1/users${u}`)
         if (data) {
