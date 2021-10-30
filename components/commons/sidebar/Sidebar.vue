@@ -6,20 +6,6 @@
     .flex.pt-2
         .flex.sdx
             SDefault
-
-    //- MAIN SIDEBAR FLOAT
-    mq-layout(:mq='["md", "sm"]')
-        BSidebar#MainSidebarX(
-            title='Main Menu',
-            backdrop,
-            bg-variant='white',
-            shadow,
-            left,
-            width='240px'
-        )
-            .flex.pt-2
-                //- load sidebar menu only
-                SDefault
 </template>
 <script>
 import {

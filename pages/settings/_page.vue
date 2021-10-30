@@ -1,23 +1,32 @@
 <template lang="pug">
-Content(title='User Manager')
+Content(title='Settings')
     template(v-slot:insidebar)
-        .flex.b-t
-            SidebarMenu(:menu='res.menu')
+        SettingsMenu
 
-    template(v-slot:filter)
-        .flex.d-flex.flex-column-sm
-            button.btn.btn-sm.btn-outline.mr-1.rounded-pill Menu 1
-            button.btn.btn-sm.btn-outline.mr-1.rounded-pill Menu 2
+    //- template(v-slot:filter)
+        .flex.d-flex.justify-content-between
+            h5.mb-0.pb-0 {{ $route.params.page }}
+            //-.align-self-center
+                h4.pt-1 Profile
+                .text-muted Update your photo and personal details here.
 
-    .container.p-5
-        .flex {{ $store.state.auth.me }}
-        nuxt-link(to='/auth/logout')
-            button.btn.btn-light(type='submit') Logout
+    ContentMain
+        //- ========================
+        //- Project Apikeys
+        //- ========================
+        ContentBox.bg-white
+            div(style='max-width: 600px')
+                .flex.m-3 set
 </template>
 
 <script>
 import { reactive } from '@nuxtjs/composition-api'
+import SettingsMenu from '~/components/page/page_settings/SettingsMenu'
+
 export default {
+    components: {
+        SettingsMenu,
+    },
     layout: 'authenticated',
     middleware: 'authenticated',
     setup() {

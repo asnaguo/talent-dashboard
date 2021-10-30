@@ -28,13 +28,29 @@
 
         client-only
         Build
+
+    //- MAIN SIDEBAR FLOAT
+    mq-layout(:mq='["md", "sm"]')
+        BSidebar#MainSidebarX(
+            title='Main Menu',
+            backdrop,
+            bg-variant='white',
+            shadow,
+            left,
+            width='240px'
+        )
+            .flex.pt-2
+                //- load sidebar menu only
+                SDefault
 </template>
 <script>
 import { BOverlay } from 'bootstrap-vue'
 import { computed, reactive, useContext } from '@nuxtjs/composition-api'
+import SDefault from '~/components/menusidebar/index'
 export default {
     components: {
         BOverlay,
+        SDefault,
     },
     scrollToTop: true,
     setup() {

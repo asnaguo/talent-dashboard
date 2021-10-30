@@ -2,15 +2,18 @@
 .flex
     .flex.d-flex.justify-content-between
         .pr-2
-            button.btn.btn-sm.btn-outline(type='submit', v-b-toggle.contentFilter) 
+            button.btn.btn-sm.btn-outline(
+                type='submit',
+                v-b-toggle.contentFilter
+            )
                 IconCarbonFilter(height='18px')
                 .pl-1 Filter
 
         //- right icon
-        Menu
+        //- Menu
     .flex
         BCollapse#contentFilter
-            .pt-2 
+            .pt-2
                 slot
 </template>
 <script>

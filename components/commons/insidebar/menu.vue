@@ -1,5 +1,6 @@
 <template lang="pug">
-button.btn.btn-sm.btn-outline(type='submit', v-b-toggle.MainInSidebar) 
-    IconMaterialMenu(height='18px' v-b-toggle.MainSidebarX)
-    .pl-1 Menu
+.d-flex.align-self-center.mr-3
+    button.btn.btn-xs.btn-outline(v-b-toggle.MainInSidebar, type='submit')
+        IconMaterialMenu(height='18px')
+        .pl-1 Menu
 </template>

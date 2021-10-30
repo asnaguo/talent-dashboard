@@ -59,7 +59,17 @@ export default {
         {
             src: '~/plugins/bootstrap',
             mode: 'client'
-        }
+        },
+        {
+            src: '~/plugins/filter_currency',
+            mode: 'client'
+        }, {
+            src: '~/plugins/filter_lowercase',
+            mode: 'client'
+        }, {
+            src: '~/plugins/filter_bytes',
+            mode: 'client'
+        },
     ],
     router: {
         middleware: 'default'

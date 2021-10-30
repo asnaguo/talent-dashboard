@@ -41,10 +41,10 @@ export default defineComponent({
                     title: 'admin',
                 },
                 {
-                    id: 'profile',
-                    title: 'My Profile',
+                    id: 'settings',
+                    title: 'Settings',
                     icon: 'account-box',
-                    link: '/profile',
+                    link: '/settings',
                 },
                 {
                     id: 'administrator',
