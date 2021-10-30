@@ -1,23 +1,60 @@
 <template lang="pug">
-Content(title='User Manager')
+Content(title='Settings')
+    //- in-sidebar
     template(v-slot:insidebar)
-        .flex.b-t
-            SidebarMenu(:menu='res.menu')
+        SettingsMenu
+
+    //- toolbar
+    template(v-slot:toolbar)
+        //- --------------------
+        //- toolbar block
+        //- --------------------
+        .flex.d-flex.justify-content-between
+            //- toolbar title
+            .flex
+                h5.mb-0.pb-1 Profile
+                .text-muted Update your photo and personal details here.
+            //- toolbar buttons
+            .ml-2.d-flex.align-self-center
+                b-button.btn.btn-xs.btn-primary.ml-2(
+                    v-b-modal.ModalNewNamespace
+                )
+                    i.mdi.mdi-plus.mdi-18px
+                    .pl-1 Projects
+                b-button.btn.btn-xs.ml-2(variant='outline')
+                    i.mdi.mdi-pokeball.mdi-18px
 
     template(v-slot:filter)
-        .flex.d-flex.flex-column-sm
-            button.btn.btn-sm.btn-outline.mr-1.rounded-pill Menu 1
-            button.btn.btn-sm.btn-outline.mr-1.rounded-pill Menu 2
+        .flex.d-flex.justify-content-between
+            b-button.btn.btn-xs.mr-2(variant='outline')
+                i.mdi.mdi-plus.mdi-18px
+                .pl-1 Projects
 
-    .container.p-5
-        .flex {{ $store.state.auth.me }}
-        nuxt-link(to='/auth/logout')
-            button.btn.btn-light(type='submit') Logout
+    //- breadcrumb
+    template(v-slot:breadcrumb)
+        b-breadcrumb.py-2.bg-white.no-radius.text-uppercase
+            b-breadcrumb-item(to='/') Dashboard
+            b-breadcrumb-item(to='/settings') Settings
+            b-breadcrumb-item(active) Profile
+
+    ContentMain
+        //- ========================
+        //- Project Apikeys
+        //- ========================
+        ContentBox.bg-white
+            .container(style='max-width: 600px')
+                .m-4
+                    pre {{ $store.state.auth.me }}
 </template>
 
 <script>
 import { reactive } from '@nuxtjs/composition-api'
+import SettingsMenu from '~/components/page/page_settings/SettingsMenu'
+
 export default {
+    components: {
+        SettingsMenu,
+    },
     layout: 'authenticated',
     middleware: 'authenticated',
     setup() {
