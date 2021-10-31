@@ -24,6 +24,15 @@
         margin-left: 0;
     }
 }
+@include media-breakpoint-down(lg) {
+    .mb-md-2 {
+        margin-bottom: 0.5rem;
+    }
+    .filterdiv {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
 
 //- =========================
 //- pre

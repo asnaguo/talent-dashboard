@@ -1,13 +1,49 @@
 export const state = () => ({
     results: [],
     result: {},
+    selected: [],
     page: 1,
-    total: 0,
-    perpage: 15,
+    count: {
+        total: 0,
+        pages: 1,
+    },
+    limit: 15,
     q: "",
-    filterby: "",
+    filterby: "fullname",
     sortby: "created",
-    sort: "asc"
+    sort: "asc",
+    fields: [
+        {
+            key: 'selected',
+            label: '#',
+            tdClass: 'wslctd',
+            sort: false,
+        },
+        {
+            key: 'avatar',
+            label: 'Avatar',
+            tdClass: 'wava',
+            sort: false,
+        },
+        {
+            key: 'fullname',
+            label: 'Full Name',
+            sort: true,
+            // thClass: 'sortable',
+        },
+        {
+            key: 'role',
+            label: 'Role',
+            sort: true,
+        },
+        {
+            key: 'email',
+            label: 'Email',
+            sort: true,
+        },
+        { key: 'whatsapp', label: 'Whatsapp', sort: true },
+        { key: 'status', label: 'Status', sort: true },
+    ],
 })
 
 export const mutations = {
@@ -16,6 +52,21 @@ export const mutations = {
     },
     SETUSER(state, { i, v }) {
         state.results[i] = v
+    },
+    SELECTNONE(state) {
+        state.results.map(x => {
+            x.select = false
+            return x
+        })
+    },
+    SELECTALL(state) {
+        state.results.map(x => {
+            x.select = true
+            return x
+        })
+    },
+    SELECTINDEX(state, id) {
+        state.results[id].select = !state.results[id].select
     }
 }
 export const actions = {
@@ -45,7 +96,7 @@ export const actions = {
      * get data
      */
     async FetchAll({ state, commit, dispatch }) {
-        let u = '?limit=' + state.perpage
+        let u = '?limit=' + state.limit
         u += '&page=' + state.page
         u += '&filterby=' + state.filterby
         u += '&q=' + state.q
@@ -58,10 +109,14 @@ export const actions = {
             //     k: 'results',
             //     v: data.results
             // })
+            const ds = data.results
+            const wx = ds.map((x) => {
+                x.select = false
+                return x
+            })
 
-            commit('SET', { k: 'results', v: data.results })
-            commit('SET', { k: 'total', v: data.count.total })
-            commit('SET', { k: 'pages', v: data.count.pages })
+            commit('SET', { k: 'results', v: wx })
+            commit('SET', { k: 'count', v: data.count })
 
         }
     }

@@ -1,0 +1,165 @@
+
+        //-.flex.d-flex.justify-content-start
+            .mr-2
+                b-dropdown(size='sm', left, variant='outline')
+                    template(#button-content)
+                        i.mdi.mdi-account.mdi-18px
+                        .px-2 Accounts
+                    b-dropdown-header
+                        | Search User
+                    b-dropdown-form
+                        .flex.w-md.pb-3
+                            b-form-input#input-1.m-0(
+                                size='sm',
+                                type='email',
+                                placeholder='Search',
+                                required
+                            )
+                        .flex.w-md
+                            b-list-group.bg-white(flush)
+                                b-list-group-item.py-1.px-0.m-0 Cras justo odio
+                                b-list-group-item.py-1.px-0.m-0 Dapibus ac facilisis in
+                                b-list-group-item.py-1.px-0.m-0 Morbi leo risus
+                                b-list-group-item.py-1.px-0.m-0 Porta ac consectetur ac
+                                b-list-group-item.py-1.px-0.m-0 Vestibulum at eros
+            .mr-2
+                b-button(size='sm', variant='outline')
+                    .flex.d-flex.flex-nowrap
+                        i.mdi.mdi-cloud-download-outline.mdi-18px
+                        .px-1 Export
+            .mr-2
+                b-button(size='sm', variant='outline', style='width: auto')
+                    .flex.d-flex.flex-nowrap
+                        i.mdi.mdi-sort.mdi-18px
+                        .px-1 Email
+            .mr-2
+                b-dropdown#dropdown-form(
+                    :text='`SortBy ${$store.state.users.sortby}`',
+                    size='sm',
+                    ref='dropdown',
+                    variant='outline'
+                )
+                    b-dropdown-form
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='7',
+                            v-model='res.val'
+                        ) Last 7 Days
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='14',
+                            v-model='res.val'
+                        ) Last 14 Days
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='30',
+                            v-model='res.val'
+                        ) Last 30 Days
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='90',
+                            v-model='res.val'
+                        ) Last 90 Days
+                    b-dropdown-divider
+                    b-dropdown-item-button
+                        .flex.d-flex.px-1(style='min-width: 140px')
+                            i.mdi.mdi-plus.mdi-18px
+                            .px-1.pt-1 Add Custom
+        //-.flex.d-flex.justify-content-start
+            .mr-2
+                b-dropdown(size='sm', left, variant='outline')
+                    template(#button-content)
+                        i.mdi.mdi-account.mdi-18px
+                        .px-2 Accounts
+                    b-dropdown-header
+                        | Search User
+                    b-dropdown-form
+                        .flex.w-md.pb-3
+                            b-form-input#input-1.m-0(
+                                size='sm',
+                                type='email',
+                                placeholder='Search',
+                                required
+                            )
+                        .flex.w-md
+                            b-list-group.bg-white(flush)
+                                b-list-group-item.py-1.px-0.m-0 Cras justo odio
+                                b-list-group-item.py-1.px-0.m-0 Dapibus ac facilisis in
+                                b-list-group-item.py-1.px-0.m-0 Morbi leo risus
+                                b-list-group-item.py-1.px-0.m-0 Porta ac consectetur ac
+                                b-list-group-item.py-1.px-0.m-0 Vestibulum at eros
+            .mr-2
+                b-button(size='sm', variant='outline')
+                    .flex.d-flex.flex-nowrap
+                        i.mdi.mdi-cloud-download-outline.mdi-18px
+                        .px-1 Export
+            .mr-2
+                b-button(size='sm', variant='outline', style='width: auto')
+                    .flex.d-flex.flex-nowrap
+                        i.mdi.mdi-sort.mdi-18px
+                        .px-1 Email
+            .mr-2
+                b-dropdown#dropdown-form(
+                    :text='`SortBy ${$store.state.users.sortby}`',
+                    size='sm',
+                    ref='dropdown',
+                    variant='outline'
+                )
+                    b-dropdown-form
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='7',
+                            v-model='res.val'
+                        ) Last 7 Days
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='14',
+                            v-model='res.val'
+                        ) Last 14 Days
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='30',
+                            v-model='res.val'
+                        ) Last 30 Days
+                        b-form-radio.px-3(
+                            name='smx',
+                            value='90',
+                            v-model='res.val'
+                        ) Last 90 Days
+                    b-dropdown-divider
+                    b-dropdown-item-button
+                        .flex.d-flex.px-1(style='min-width: 140px')
+                            i.mdi.mdi-plus.mdi-18px
+                            .px-1.pt-1 Add Custom
+            .mr-2
+                b-form-input#input-1.border-outline(
+                    size='sm',
+                    type='email',
+                    placeholder='Search',
+                    required
+                )
+            .mr-2
+                b-button(size='sm', variant='outline')
+                    .d-flex.flex.flex-nowrap
+                        i.mdi.mdi-refresh.mdi-18px
+
+            .mr-2
+                b-button(size='sm', variant='outline')
+                    .flex.flex-nowrap Result:&nbsp;100
+
+            .mr-2
+                .input-group.input-group-sm.mr-2(style='max-width: 110px')
+                    .input-group-prepend
+                        label.input-group-text Limit
+                    b-form-select(
+                        :value='40',
+                        style='height: 31px',
+                        :options='[10, 20, 30, 40]'
+                    )
+
+            b-button.btn.btn-xs.mr-2(variant='outline')
+                i.mdi.mdi-plus.mdi-18px
+                .pl-1 Projects
+            b-button.btn.btn-xs.mr-2(variant='outline')
+                .pl-1 {{ $store.state.users.sortby }}
+

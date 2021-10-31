@@ -1,21 +1,92 @@
 <template lang="pug">
 .flex
-    Tabel(:results='res.users', :fields='res.fields')
+    .flex
+        b-overlay(:show='res.show', rounded='sm')
+            b-table(
+                table-class='text-sm table table-theme v-middle table-hover table-condensed',
+                small,
+                tdClass='text-danger',
+                :fields='res.fields',
+                :items='res.results',
+                responsive='sm',
+                select-mode='multi',
+                selectable,
+                no-select-on-click,
+                selected-variant='active'
+            )
+                //- ================================================
+                //- head:selected_all
+                template(#head(selected)='data')
+                    b-form-checkbox(name='selected-rows', @change='SelectAll')
+
+                //- head:sort
+                template(#head()='data')
+                    .flex.d-flex(
+                        @click='Sort(data.field.key)',
+                        v-if='data.field.sort'
+                    )
+                        .flex {{ data.label }}
+                        .pl-2
+                            i.mdi.mdi-sort.pointer.text-muted
+                    .flex.d-flex(v-else) {{ data.label }}
+
+                //- body:select
+                template(v-slot:cell(selected)='{ item, index }')
+                    b-form-checkbox(
+                        :checked='item.select',
+                        name='selected-rows',
+                        @change='SelectRow(index, item)'
+                    )
+                //- ================================================
+                //- ================================================
+
+                //- avatar
+                template(#cell(avatar)='data')
+                    b-avatar(variant='light', :src='data.value', size='24')
+
+                //- role
+                template(#cell(role)='{ value }')
+                    b-badge(variant='primary', v-if='value === "admin"') {{ value }}
+                    b-badge(variant='light', v-else) {{ value }}
+                //- status
+                template(#cell(status)='{ value }')
+                    b-badge(variant='primary', v-if='value === "active"') {{ value }}
+                    b-badge(variant='light', v-else) {{ value }}
+    .m-3
+        b-pagination-nav(
+            v-model='res.p',
+            :base-url='"/users/"',
+            :total-rows='res.total',
+            :number-of-pages='res.pages || 1',
+            use-router
+        )
 </template>
 
 <script>
-import { ref, onMounted, reactive, useContext } from '@nuxtjs/composition-api'
-import Tabel from './Tabel.vue'
+import {
+    computed,
+    onMounted,
+    reactive,
+    useContext,
+} from '@nuxtjs/composition-api'
+import UseSelect from './UseSelect'
+
 export default {
-    components: { Tabel },
     setup() {
-        const { store } = useContext()
-        const selectableTable = ref(null)
+        const { store, route } = useContext()
+        const { SelectAll, SelectRow, Sort } = UseSelect('users')
+
         const res = reactive({
+            show: true,
+            p: route.value.params.page || 1,
+            limit: computed(() => store.state.users.limit),
+            pages: computed(() => store.state.users.count.pages),
+            total: computed(() => store.state.users.count.total),
+            page: computed(() => store.state.users.page),
             q: '',
             scall: false,
-            users: [],
-            selected: [],
+            results: computed(() => store.state.users.results),
+            selected: computed(() => store.state.users.selected),
             fields: [
                 {
                     key: 'selected',
@@ -49,19 +120,18 @@ export default {
                 { key: 'status', label: 'status', sort: true },
             ],
         })
+
         onMounted(() => {
+            res.show = true
+            store.commit('users/SET', {
+                k: 'page',
+                v: route.value.params.page || 1,
+            })
             store.dispatch('users/FetchAll').then(() => {
-                require('consola').info('users loaded')
-                const w = store.state.users.results
-                const ws = JSON.parse(JSON.stringify(w))
-                const wx = ws.map((x) => {
-                    x.select = false
-                    return x
-                })
-                res.users = wx
+                res.show = false
             })
         })
-        return { res, selectableTable }
+        return { res, SelectAll, SelectRow, Sort }
     },
 }
 </script>
@@ -72,5 +142,11 @@ export default {
 }
 .wava {
     width: 20px;
+}
+.tabel {
+    border: solid 1px #ff0000;
+    overflow-y: scroll;
+    height: 300px;
+    max-height: 300px;
 }
 </style>

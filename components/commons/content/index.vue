@@ -5,7 +5,7 @@
         .flex.b-b(v-if='$slots.breadcrumb')
             .flex.d-flex.justify-content-between
                 slot(name='breadcrumb')
-                Menu
+                Menu(v-if='$slots.insidebar')
         .flex.b-b.d-flex.justify-content-between(v-else)
             .flex
                 b-breadcrumb.py-2.bg-white.no-radius.text-uppercase
@@ -20,6 +20,9 @@
         .flex.b-b.bg-body(v-if='$slots.toolbar')
             .px-3.py-2
                 slot(name='toolbar')
+        //-.flex.b-b.px-3.py-2.bg-white(v-if='$slots.filter')
+            IFilter
+                slot(name='filter')
 
     Insidebar(v-if='$slots.insidebar', :title='title')
         //- filter on sm mode
@@ -61,10 +64,12 @@
 import { defineComponent, onMounted, reactive, ref } from '@vue/composition-api'
 import Menu from '../insidebar/menu'
 import Insidebar from '~/components/commons/insidebar'
+import IFilter from '~/components/commons/insidebar/filter'
 
 export default defineComponent({
     components: {
         Insidebar,
+        IFilter,
         Menu,
     },
     props: {
@@ -90,7 +95,7 @@ export default defineComponent({
 
                 const h2 = cntnt2.value.getBoundingClientRect().top
                 res.stl2 = {
-                    'overflow-x': 'scroll',
+                    'overflow-x': 'hidden',
                     height: `calc(${bh}px - ${h2}px)`,
                 }
             }, 2000)

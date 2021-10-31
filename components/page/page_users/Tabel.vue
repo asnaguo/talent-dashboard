@@ -84,9 +84,7 @@ export default defineComponent({
         // ---------------------
         const cfg = reactive({
             asc: 1,
-            Sort: (x) => {
-                require('consola').info('klik', x)
-            },
+            Sort: (x) => {},
             select_all: false,
             SelectAllRow: (x) => {
                 cfg.select_all = x

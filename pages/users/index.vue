@@ -1,41 +1,44 @@
 <template lang="pug">
-Content(title='Settings')
+Content(title='Users')
     //- in-sidebar
-    //-template(v-slot:insidebar)
+    template(v-slot:insidebar)
         SettingsMenu
 
     //- toolbar
-    //- template(v-slot:toolbar)
+    template(v-slot:toolbar)
         //- --------------------
         //- toolbar block
         //- --------------------
         .flex.d-flex.justify-content-between
             //- toolbar title
             .flex
-                h5.mb-0.pb-1 Profile
-                .text-muted Update your photo and personal details here.
+                h5.mb-0.pb-1 Users
+                .text-muted Manage users / agen
             //- toolbar buttons
             .ml-2.d-flex.align-self-center
-                b-button.btn.btn-xs.btn-primary.ml-2(
+                b-button.btn.btn-sm.btn-primary.ml-2(
                     v-b-modal.ModalNewNamespace
                 )
                     i.mdi.mdi-plus.mdi-18px
-                    .pl-1 Projects
-                b-button.btn.btn-xs.ml-2(variant='outline')
+                    .pl-1 User
+                //-b-button.btn.btn-sm.ml-2(variant='outline')
                     i.mdi.mdi-pokeball.mdi-18px
 
     template(v-slot:filter)
-        .flex.d-flex.justify-content-between
-            b-button.btn.btn-xs.mr-2(variant='outline')
-                i.mdi.mdi-plus.mdi-18px
-                .pl-1 Projects
+        ContentFilter
+            FilterSearch(store='users')
+            FilterLimit(store='users')
+            FilterSortBy(store='users')
+            FilterAscd(store='users')
+            FilterTotal(store='users')
+            FilterExport(store='users')
+            FilterSelected(store='users')
 
     //- breadcrumb
     template(v-slot:breadcrumb)
         b-breadcrumb.py-2.bg-white.no-radius.text-uppercase
             b-breadcrumb-item(to='/') Dashboard
-            b-breadcrumb-item(to='/settings') Settings
-            b-breadcrumb-item(active) Profile
+            b-breadcrumb-item(to='/users') Users
 
     ContentMain
         //- ========================

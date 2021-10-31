@@ -113,7 +113,6 @@ export default {
         })
         onMounted(() => {
             store.dispatch('users/FetchAll').then(() => {
-                require('consola').info('users loaded')
                 const w = store.state.users.results
                 const ws = JSON.parse(JSON.stringify(w))
                 const wx = ws.map((x) => {
