@@ -1,7 +1,7 @@
 version: '3.3'
 services:
     app:
-        container_name: ikamai_rootenv_dash
+        container_name: konverzi_2022_dash
         build:
             context: ./
             dockerfile: Dockerfile-dev
@@ -12,9 +12,9 @@ services:
             - STAGE=dev
         labels:
             - traefik.enable=true
-            - traefik.http.services.ikamai_rootenv_dash.loadbalancer.server.port=3000
-            - traefik.http.routers.ikamai_rootenv_dash.rule=Host(`aimi.app.local.net`)
-            - traefik.http.routers.ikamai_rootenv_dash.entrypoints=web
+            - traefik.http.services.konverzi_2022_dash.loadbalancer.server.port=3000
+            - traefik.http.routers.konverzi_2022_dash.rule=Host(`konverzi.local.net`)
+            - traefik.http.routers.konverzi_2022_dash.entrypoints=web
 networks:
     default:
         external:
