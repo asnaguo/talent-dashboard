@@ -2,7 +2,7 @@
 Content(title='Users')
     //- in-sidebar
     template(v-slot:insidebar)
-        UsersMenu
+        SettingsMenu
 
     //- toolbar
     template(v-slot:toolbar)
@@ -21,8 +21,6 @@ Content(title='Users')
                 )
                     i.mdi.mdi-plus.mdi-18px
                     .pl-1 User
-                .ml-2
-                    FilterExport(store='users')
                 //-b-button.btn.btn-sm.ml-2(variant='outline')
                     i.mdi.mdi-pokeball.mdi-18px
 
@@ -34,7 +32,7 @@ Content(title='Users')
             FilterSortBy(store='users')
             FilterAscd(store='users')
             FilterTotal(store='users')
-            //-FilterExport(store='users')
+            FilterExport(store='users')
             FilterSelected(store='users')
 
     //- breadcrumb
@@ -50,41 +48,22 @@ Content(title='Users')
         //- ========================
         ContentBox
             UsersTable
-            .m-3
-                Pagination(base='users', store='users')
 </template>
 
 <script>
-import { reactive, onBeforeMount, useContext } from '@nuxtjs/composition-api'
+import { reactive } from '@nuxtjs/composition-api'
 import SettingsMenu from '~/components/page/page_settings/SettingsMenu'
-import UsersMenu from '~/components/page/page_users/UsersMenu'
-import UsersTable from '~/components/page/page_users/UsersTable'
+import UsersTable from '~/components/page/page_users/UsersTable.vue'
 
 export default {
     components: {
         SettingsMenu,
-        UsersMenu,
         UsersTable,
     },
     layout: 'authenticated',
     middleware: 'authenticated',
     setup() {
-        const { store } = useContext()
         const res = reactive({})
-        onBeforeMount(() => {
-            store.commit('users/SET', {
-                k: 'match',
-                v: 'regex',
-            })
-            store.commit('users/SET', {
-                k: 'filterby',
-                v: 'email',
-            })
-            store.commit('users/SET', {
-                k: 'q',
-                v: '',
-            })
-        })
         return { res }
     },
 }

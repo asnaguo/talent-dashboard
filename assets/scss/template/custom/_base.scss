@@ -24,8 +24,8 @@
         margin-left: 0;
     }
 }
-@include media-breakpoint-down(lg) {
-    .mb-md-2 {
+@include media-breakpoint-down(md) {
+    .flterbox .mr-2 {
         margin-bottom: 0.5rem;
     }
     .filterdiv {

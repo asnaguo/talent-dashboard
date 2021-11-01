@@ -15,7 +15,7 @@ section
 
     mq-layout(:mq='["lg"]')
         .insidebar.insdx.d-none.d-md-block(v-if='res.show')
-            .flex.d-flex.py-1.px-2(style='min-height: 36px')
+            .flex.d-flex.py-1.px-2.b-b(style='min-height: 37px')
                 div
                     ThemeSetInsidebarMini
                 .d-flex.flex.pl-2(v-if='title !== ""')

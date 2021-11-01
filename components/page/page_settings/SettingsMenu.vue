@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.b-t
+.flex
     SidebarMenu(:menu='res.menu')
 </template>
 <script>

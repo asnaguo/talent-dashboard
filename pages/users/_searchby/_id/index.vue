@@ -36,12 +36,15 @@ Content(title='Users')
             FilterTotal(store='users')
             //-FilterExport(store='users')
             FilterSelected(store='users')
-
     //- breadcrumb
     template(v-slot:breadcrumb)
         b-breadcrumb.py-2.bg-white.no-radius.text-uppercase
             b-breadcrumb-item(to='/') Dashboard
             b-breadcrumb-item(to='/users') Users
+            b-breadcrumb-item(
+                active,
+                :to='`/users/${$route.params.searchby}/${$route.params.id}`'
+            ) {{ $route.params.searchby }}:{{ $route.params.id }}
 
     //- content wajib
     ContentMain
@@ -49,13 +52,26 @@ Content(title='Users')
         //- Project Apikeys
         //- ========================
         ContentBox
+            //.flex
+                pre
+                    | {{ $store.state.users.filterby }}
+                    | {{ $store.state.users.q }}
+                    | {{ $store.state.users.url }}
             UsersTable
             .m-3
-                Pagination(base='users', store='users')
+                Pagination(
+                    :base='`users/${$route.params.searchby}/${$route.params.id}`',
+                    store='users'
+                )
 </template>
 
 <script>
-import { reactive, onBeforeMount, useContext } from '@nuxtjs/composition-api'
+import {
+    onMounted,
+    onBeforeMount,
+    reactive,
+    useContext,
+} from '@nuxtjs/composition-api'
 import SettingsMenu from '~/components/page/page_settings/SettingsMenu'
 import UsersMenu from '~/components/page/page_users/UsersMenu'
 import UsersTable from '~/components/page/page_users/UsersTable'
@@ -69,20 +85,21 @@ export default {
     layout: 'authenticated',
     middleware: 'authenticated',
     setup() {
-        const { store } = useContext()
+        const { store, route } = useContext()
         const res = reactive({})
+        onMounted(() => {})
         onBeforeMount(() => {
             store.commit('users/SET', {
                 k: 'match',
-                v: 'regex',
+                v: 'match',
             })
             store.commit('users/SET', {
                 k: 'filterby',
-                v: 'email',
+                v: route.value.params.searchby,
             })
             store.commit('users/SET', {
                 k: 'q',
-                v: '',
+                v: route.value.params.id || '',
             })
         })
         return { res }

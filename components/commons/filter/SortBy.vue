@@ -1,5 +1,5 @@
 <template lang="pug">
-.mr-2.mb-md-2.d-flex.align-self-center
+.mr-2.d-flex.align-self-center(v-if='res.fields.length > 0')
     .input-group.input-group-sm
         b-dropdown#dropdown-form(
             :text='`SortBy ${res.s}`',
@@ -7,7 +7,7 @@
             ref='dropdown',
             variant='outline'
         )
-            .flex.px-3
+            .flex.px-2
                 b-form-radio-group(
                     name='data-sortby',
                     stacked,
@@ -27,9 +27,9 @@
 import {
     computed,
     defineComponent,
+    onMounted,
     reactive,
     useContext,
-    watchEffect,
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -43,17 +43,34 @@ export default defineComponent({
         const { store } = useContext()
         const res = reactive({
             s: '',
-            select: 'email',
+            select: '_id',
             sortby: computed(() => store.state[props.store].sortby),
             fields: computed(() => store.state[props.store].fields),
-            Ch: () => {
+            Ch: (sx) => {
+                const k = res.fields.find((x) => x.key === sx)
+                res.s = k.label
+                res.select = k.key
+                store.commit(props.store + '/SET', {
+                    k: 'sortby',
+                    v: k.key,
+                })
                 store.dispatch(props.store + '/FetchAll').then(() => {})
             },
         })
 
-        watchEffect(() => {
-            res.s = res.fields.find((x) => x.key === res.select).label
-            store.commit(props.store + '/SET', { k: 'sortby', v: res.select })
+        onMounted(() => {
+            if (res.fields.length > 0) {
+                res.fields.forEach((x) => {
+                    if (x.sortKey) {
+                        store.commit(props.store + '/SET', {
+                            k: 'sortby',
+                            v: x.key,
+                        })
+                        res.s = x.label
+                        res.select = x.key
+                    }
+                })
+            }
         })
         return { res }
     },

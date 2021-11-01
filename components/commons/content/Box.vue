@@ -24,7 +24,7 @@ export default defineComponent({
                 const h2 = inscx.value.getBoundingClientRect().top
                 res.stl2 = {
                     height: `calc(${bh}px - ${h2}px)`,
-                    overflowY: 'scroll',
+                    overflowY: 'auto',
                     'scrollbar-width': 'thin',
                 }
             }, 800)

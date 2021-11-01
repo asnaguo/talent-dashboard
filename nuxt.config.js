@@ -69,6 +69,9 @@ export default {
         }, {
             src: '~/plugins/filter_bytes',
             mode: 'client'
+        }, {
+            src: '~/plugins/jsoncsv',
+            mode: 'client'
         },
     ],
     router: {

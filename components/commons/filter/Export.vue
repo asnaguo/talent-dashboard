@@ -1,5 +1,5 @@
 <template lang="pug">
-.mr-2.mb-md-2
+.mr-2
     b-button(size='sm', variant='outline')
         .flex.d-flex.flex-nowrap
             i.mdi.mdi-cloud-download-outline.mdi-18px

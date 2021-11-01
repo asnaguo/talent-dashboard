@@ -1,5 +1,5 @@
 <template lang="pug">
-.mr-2.mb-md-2.d-flex.align-self-center
+.mr-2.d-flex.align-self-center
     .input-group.input-group-sm
         b-button-group(size='sm')
             b-button(
@@ -56,11 +56,7 @@ export default defineComponent({
             },
         })
         onMounted(() => {
-            if (res.sort === 'ASC') {
-                res.ChASC()
-            } else {
-                res.ChDESC()
-            }
+            res.ChASC()
         })
         return { res }
     },

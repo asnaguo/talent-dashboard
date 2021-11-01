@@ -1,10 +1,11 @@
 <template lang="pug">
-.mr-2.mb-md-2.d-flex.align-self-center(v-if='res.count > 0')
+.mr-2.d-flex.align-self-center(v-if='res.count > 0')
     .input-group.input-group-sm
-        b-button(size='sm', variant='info', style='width: auto')
-            .flex.d-flex.flex-nowrap.text-white
-                i.mdi.mdi-cloud-download-outline.mdi-18px
-                .px-1 Export:&nbsp;{{ res.count }}
+        DownloadCSV(:data='res.selected')
+            b-button(size='sm', variant='info', style='width: auto')
+                .flex.d-flex.flex-nowrap.text-white
+                    i.mdi.mdi-cloud-download-outline.mdi-18px
+                    .px-1 &nbsp;{{ res.count }}
 </template>
 <script>
 import {

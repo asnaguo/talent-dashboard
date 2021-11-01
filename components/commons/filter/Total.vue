@@ -1,5 +1,5 @@
 <template lang="pug">
-.mr-2.mb-md-2.d-flex.align-self-center
+.mr-2.d-flex.align-self-center
     .input-group.input-group-sm
         b-button(size='sm', variant='outline', style='width: auto')
             .flex.d-flex.flex-nowrap

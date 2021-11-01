@@ -17,6 +17,7 @@ export const actions = {
     nuxtClientInit({ state, dispatch }) {
         // code
         dispatch('core/LoadTheme')
+        // dispatch('users/LoadData')
 
         if (state.islogin) {
             dispatch('auth/me/GetMe')

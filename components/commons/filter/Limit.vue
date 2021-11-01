@@ -1,5 +1,5 @@
 <template lang="pug">
-.mr-2.mb-md-2.d-flex.align-self-center.flex-wrap
+.mr-2
     .input-group.input-group-sm.d-flex
         .input-group-prepend
             label.input-group-text Limit

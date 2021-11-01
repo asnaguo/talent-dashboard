@@ -32,11 +32,7 @@
                         :index='index'
                     )
                 template(v-slot:cell(edit)='{ item, index }')
-                    i.mdi.mdi-pencil.text-muted.pointer(
-                        v-b-toggle.DrawerUserEdit,
-                        @click='res.EditUser(item)'
-                    )
-
+                    i.mdi.mdi-pencil.text-muted.pointer
                 //- ---------------------------------------------------------------------------------------- -//
 
                 //- ================================================
@@ -55,27 +51,8 @@
                 template(#cell(status)='{ value }')
                     b-badge(variant='primary', v-if='value === "active"') {{ value }}
                     b-badge(variant='light', v-else) {{ value }}
-                //- products
-                template(#cell(products)='{ value }')
-                    b-dropdown#dropdown-form(
-                        :text='`${value.length}`',
-                        size='xs',
-                        ref='dropdown',
-                        variant='text'
-                    )
-                        .flex.px-2
-                            b-form-group(name='data-sortby', stacked)
-                                b-form-select-option(
-                                    v-for='p in value',
-                                    :key='p'
-                                )
-                                    .flex.d-flex
-                                        i.mdi.mdi-chevron-right
-                                        .pl-1 {{ p }}
-
-    Drawer#DrawerUserEdit(title='Edit User', :right='true', width='600px')
-        .flex
-            UserEdit
+    .m-3
+        Pagination(base='users', store='users')
 </template>
 
 <script>
@@ -85,24 +62,17 @@ import {
     reactive,
     useContext,
 } from '@nuxtjs/composition-api'
-import UserEdit from './UserEdit'
 import UseSelect from '~/plugins/rizamodules/UseSelect'
 
 export default {
-    components: {
-        UserEdit,
-    },
     setup() {
         const { store } = useContext()
         const { SelectAll, SelectRow, Sort } = UseSelect('users')
         const res = reactive({
-            show: false,
+            show: true,
             store: 'users',
             results: computed(() => store.state.users.results),
             fields: computed(() => store.state.users.fields),
-            EditUser: (v) => {
-                store.commit('users/SET', { k: 'result', v })
-            },
         })
         onMounted(() => {
             res.show = true
