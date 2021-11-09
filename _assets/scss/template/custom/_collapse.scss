@@ -1,0 +1,21 @@
+.collapsed .when-open,
+.not-collapsed .when-closed {
+  display: none;
+}
+
+.acdtl {
+  font-weight: 500;
+  width: 100%;
+}
+
+.acdtl .line {
+  content: '';
+  border-top: solid 1px #e0e0e0;
+  width: 100%;
+  margin-top: 1px;
+  margin-left: 10px;
+  align-self: center;
+  display: block;
+  flex: 1;
+  height: 1px;
+}

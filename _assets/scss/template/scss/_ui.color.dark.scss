@@ -1,0 +1,295 @@
+/*
+Dark theme
+*/
+$txtclr: #99a0b2;
+
+.bg-dark {
+    // background: #3b3b41;
+
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6,
+    .text-color,
+    table,
+    .btn-white,
+    .card,
+    .block,
+    .list-group,
+    .ui-switch i::before,
+    .table-theme tbody td {
+        color: $txtclr;
+
+        :hover {
+            color: #fff;
+        }
+    }
+    .my-editor {
+        background: #2d2d30;
+        caret-color: #fff;
+    }
+    .acdtl .line {
+        border-top: solid 1px #404046;
+    }
+    .tl-dot {
+        border-color: #666;
+    }
+
+    color: $txtclr;
+
+    .navbarside {
+        border-right: solid 1px #404046;
+    }
+
+    @include media-breakpoint-down(sm) {
+        .navbarside {
+            border-right: none;
+        }
+    }
+    .card,
+    .dropdown-menu {
+        background: #323236;
+        border: solid 1px #404046;
+
+        a {
+            color: $txtclr;
+        }
+    }
+
+    a.sidemenu {
+        color: $txtclr;
+    }
+
+    .bg-white,
+    .bg-body {
+        background: #323236 !important;
+    }
+
+    .btn-secondary,
+    .btn-white,
+    .btn-light,
+    .badge-secondary {
+        background: #404046;
+        border: none;
+        color: $txtclr;
+    }
+
+    .form-control.border-outline,
+    .btn-outline {
+        border: solid 1px #4e4e54;
+        color: $txtclr;
+    }
+
+    .btn:not([class*='btn-']),
+    .btn.btn-icon.no-bg {
+        color: inherit;
+    }
+
+    .custom-select {
+        color: #9da4b7;
+        background: #2d2d30;
+        border: 1px solid #404046;
+    }
+
+    .custom-select {
+        background: #2d2d30
+            url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%2399a0b2' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+            right 0.75rem center/8px 10px no-repeat;
+    }
+
+    .mainav {
+        background: #323236;
+    }
+
+    .sidebar {
+        background: #323236;
+        border-right: solid 1px #404046;
+        color: $dark-color;
+    }
+
+    .b-sidebar-header {
+        color: $dark-color;
+        border-bottom: solid 1px #404046;
+    }
+
+    .insidebar {
+        background: #323236;
+        border-right: solid 1px #404046;
+    }
+
+    .b-sidebar-body {
+        color: $dark-color;
+    }
+
+    /**
+    xrgba(206, 212, 218, 0.219)
+    **/
+    .badge-light {
+        background: #666;
+    }
+
+    .navc li {
+        color: $dark-color;
+    }
+
+    .sprtr {
+        color: $dark-muted;
+    }
+
+    .form-control {
+        background-color: #2d2d30;
+        border: solid 1px #404046;
+    }
+
+    .page-sidenav a,
+    .b-sidebar-header {
+        color: $txtclr;
+    }
+
+    .b-sidebar-header svg {
+        fill: $txtclr;
+    }
+
+    .input-group-btn {
+        .btn {
+            background-color: $border-color-lt;
+        }
+    }
+
+    .input-group-btn {
+        .btn {
+            background-color: $border-color-lt;
+        }
+    }
+
+    .card-header,
+    .card-footer,
+    .b-a,
+    .b-l,
+    .b-r,
+    .b-t,
+    .b-b {
+        border-color: solid 1px #323236;
+    }
+
+    .dropdown-divider {
+        border-color: solid 1px #323236;
+    }
+
+    .upldy {
+        border: dashed 1px #333;
+    }
+
+    .upldi {
+        border-right: dashed 1px #333;
+    }
+
+    .modal-content {
+        border: solid 1px #323236;
+        background: #323236;
+    }
+
+    .b-form-spinbutton .btn {
+        color: #ccc;
+    }
+
+    .card .btn-light {
+        background: #3b404a;
+    }
+
+    .smenu {
+        .list-group {
+            .list-group-item:hover,
+            .list-group-item.active {
+                background: #3b404a;
+            }
+
+            .list-group-item.head {
+                color: $dark-color;
+            }
+        }
+    }
+
+    .b-form-spinbutton output > div,
+    .b-form-spinbutton output > bdi {
+        color: #ccc;
+    }
+
+    .border-light {
+        border-color: #3b404a !important;
+    }
+
+    .divider-text::before,
+    .divider-text::after {
+        content: '';
+        display: block;
+        flex: 1;
+        height: 1px;
+        background-color: #3b404a;
+    }
+
+    //.table-theme thead {
+    //    background: #1e2124;
+    //}
+    .bg-light {
+        color: #ccc;
+        background-color: #666 !important;
+    }
+
+    .b-sidebar > .b-sidebar-body,
+    .b-sidebar > .b-sidebar-header {
+        background: #222;
+    }
+
+    .ace-jsoneditor .ace_scroller {
+        background-color: #222;
+        color: #ccc;
+    }
+
+    .ace_hidpi .ace_text-layer,
+    .ace_hidpi .ace_gutter-layer,
+    .ace_hidpi .ace_content,
+    .ace_hidpi .ace_gutter {
+        background: #222;
+        color: #ccc;
+    }
+
+    .ace-jsoneditor .ace_variable {
+        color: #ccc;
+    }
+
+    pre {
+        color: #ccc;
+        background: #212329;
+        border: 1px solid #333;
+        border-left: 4px solid #41b883;
+    }
+
+    .table-hover tr:hover,
+    .text-dark {
+        color: #fff;
+    }
+
+    .table.b-table > tbody > .table-active,
+    .table.b-table > tbody > .table-active > th,
+    .table.b-table > tbody > .table-active > td {
+        background-color: #333;
+    }
+
+    .table-theme tbody td {
+        background: #323236;
+    }
+
+    .table-theme tbody td {
+        box-shadow: none !important;
+        border-bottom: solid 1px #3e4045;
+    }
+}

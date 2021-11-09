@@ -3,17 +3,17 @@ Content
     .container(style='max-width: 460px')
         .mt-3
             .card
-                .card-header 
+                .card-header
                     .flex
                         h4 Sign Up
-                        div Daftar agen AIMI
                 .card-body
                     //- client-only
                         Steps
                             Step Step1
                             Step Step2
                             Step Step3
-                    RegisterBox
+                    //- RegisterBox
+                    .alert.alert-warning WIP
 </template>
 
 <script>

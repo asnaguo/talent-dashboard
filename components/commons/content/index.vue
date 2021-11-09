@@ -1,6 +1,6 @@
 <template lang="pug">
 .content(style='overflow: hidden', :style='res.stl', ref='cntnt')
-    mq-layout.bg-white(:mq='["md", "sm"]')
+    mq-layout.bg-white(:mq='["md", "sm"]', v-if='res.load')
         //- breadcrumb
         .flex.b-b(v-if='$slots.breadcrumb')
             .flex.d-flex.justify-content-between
@@ -80,12 +80,14 @@ export default defineComponent({
     },
     setup() {
         const res = reactive({
+            load: false,
             stl: {},
         })
         const cntnt = ref(null)
         const cntnt2 = ref(null)
 
         onMounted(() => {
+            res.load = true
             setTimeout(() => {
                 const bh = document.documentElement.clientHeight
                 const h = cntnt.value.getBoundingClientRect().top

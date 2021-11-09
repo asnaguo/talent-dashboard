@@ -4,9 +4,8 @@
         SidebarMenu(:menu='res.menu_top')
         SidebarMenu.pt-1(:menu='res.menu_roles')
         SidebarMenu.pt-1(:menu='res.menu_status')
-        SidebarMenu.pt-1(:menu='res.menu_referral')
-        SidebarMenu.pt-1(:menu='res.menu_refname')
-        SidebarMenu.pt-1(:menu='res.menu_products')
+        SidebarMenu.pt-1(:menu='res.menu_gender')
+        SidebarMenu.pt-1(:menu='res.menu_ras')
 </template>
 <script>
 import {
@@ -30,9 +29,8 @@ export default defineComponent({
             ],
             menu_roles: [],
             menu_status: [],
-            menu_referral: [],
-            menu_refname: [],
-            menu_products: [],
+            menu_gender: [],
+            menu_ras: [],
             countby: {
                 roles: {},
                 status: {},
@@ -80,18 +78,18 @@ export default defineComponent({
                     }
                 })
 
-                // menu referral
-                res.menu_status.push({
+                // menu gender
+                res.menu_gender.push({
                     head: true,
-                    id: 'xreferral',
-                    title: 'by referral',
+                    id: 'xgender',
+                    title: 'by gender',
                 })
-                r.data.countby.referral.forEach((x) => {
+                r.data.countby.gender.forEach((x) => {
                     if (x._id !== '' && x._id !== null) {
-                        res.menu_referral.push({
+                        res.menu_gender.push({
                             id: x._id,
                             title: x._id,
-                            link: '/users/referral/' + x._id,
+                            link: '/users/gender/' + x._id,
                             count: x.count,
                             countVariant: 'light',
                             icon: 'account-arrow-right-outline',
@@ -99,41 +97,21 @@ export default defineComponent({
                     }
                 })
 
-                // menu refname
-                res.menu_refname.push({
+                // menu ras
+                res.menu_ras.push({
                     head: true,
-                    id: 'xrefname',
-                    title: 'by superagen',
+                    id: 'xras',
+                    title: 'by RAS',
                 })
-                r.data.countby.refname.forEach((x) => {
+                r.data.countby.is_suku_ras.forEach((x) => {
                     if (x._id !== '' && x._id !== null) {
-                        res.menu_refname.push({
+                        res.menu_ras.push({
                             id: x._id,
                             title: x._id,
-                            link: '/users/refname/' + x._id,
                             count: x.count,
+                            link: '/users/is_suku_ras/' + x._id,
                             countVariant: 'light',
                             icon: 'account-arrow-right-outline',
-                        })
-                    }
-                })
-
-                // menu products
-                res.menu_products.push({
-                    head: true,
-                    id: 'xproducts',
-                    title: 'by products',
-                })
-                r.data.countby.products.forEach((x) => {
-                    if (x._id !== '' && x._id !== null) {
-                        res.menu_products.push({
-                            id: x._id,
-                            title: x._id,
-                            link: '/users/products/' + x._id,
-                            count: x.count,
-                            countVariant: 'light',
-                            icon: 'package-variant-closed',
-                            iconVariant: 'success',
                         })
                     }
                 })

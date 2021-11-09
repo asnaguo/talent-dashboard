@@ -51,27 +51,15 @@
                 template(#cell(role)='{ value }')
                     b-badge(variant='primary', v-if='value === "admin"') {{ value }}
                     b-badge(variant='light', v-else) {{ value }}
+
                 //- status
                 template(#cell(status)='{ value }')
-                    b-badge(variant='primary', v-if='value === "active"') {{ value }}
+                    b-badge(variant='success', v-if='value === "active"') {{ value }}
                     b-badge(variant='light', v-else) {{ value }}
-                //- products
-                template(#cell(products)='{ value }')
-                    b-dropdown#dropdown-form(
-                        :text='`${value.length}`',
-                        size='xs',
-                        ref='dropdown',
-                        variant='text'
-                    )
-                        .flex.px-2
-                            b-form-group(name='data-sortby', stacked)
-                                b-form-select-option(
-                                    v-for='p in value',
-                                    :key='p'
-                                )
-                                    .flex.d-flex
-                                        i.mdi.mdi-chevron-right
-                                        .pl-1 {{ p }}
+
+                //- status
+                template(#cell(video_ref)='{ item, index }')
+                    a(:href='item.video_ref', target='_blank') {{ item.vid }}
 
     Drawer#DrawerUserEdit(title='Edit User', :right='true', width='600px')
         .flex

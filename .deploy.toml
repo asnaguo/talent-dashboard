@@ -1,6 +1,6 @@
 image = "registry.gitlab.com/kentang-goreng/talent_talent_dashboard"
 imagetag = "latest"
-repository = ""
+repository = "https://asnaguo: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@github.com/asnaguo/talent-dashboard.git"
 registry = "gitlab_viavalen"
 domain = "talent.co"
 deployimg = "registry.gitlab.com/viavallen/kentang-goreng/talent_talent_dashboard:latest"

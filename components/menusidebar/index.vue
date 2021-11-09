@@ -26,15 +26,15 @@ export default defineComponent({
                     icon: 'account-multiple',
                     iconVariant: 'primary',
                 },
-                {
-                    id: 'template',
-                    title: 'Template',
-                    link: '/template',
-                    icon: 'palette',
-                    iconVariant: 'success',
-                    count: 10,
-                    countVariant: 'danger',
-                },
+                // {
+                //     id: 'template',
+                //     title: 'Template',
+                //     link: '/template',
+                //     icon: 'palette',
+                //     iconVariant: 'success',
+                //     count: 10,
+                //     countVariant: 'danger',
+                // },
                 {
                     head: true,
                     id: 'hadministrator',
@@ -42,7 +42,7 @@ export default defineComponent({
                 },
                 {
                     id: 'settings',
-                    title: 'Settings',
+                    title: 'Profil Saya',
                     icon: 'account-box',
                     link: '/settings',
                 },

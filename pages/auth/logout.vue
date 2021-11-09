@@ -12,7 +12,7 @@ export default {
         this.$cookiz.set('auth.islogin', false)
 
         setTimeout(() => {
-            this.$router.push('/auth/login?utm_source=logout')
+            this.$router.push('/login?utm_source=logout')
         }, 1000)
     },
 }

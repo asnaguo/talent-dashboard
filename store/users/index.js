@@ -1,4 +1,14 @@
+
+function extractHostname(url) {
+    try {
+        return new URL(url).hostname;
+    } catch {
+        return 'link'
+    }
+}
+
 export const state = () => ({
+    apikey: '201b687484997a43f8530b5fe2672a7304122ba13b01c179b2d2bcb0538ff66a',
     loaded: false,
     results: [],
     result: {},
@@ -32,6 +42,11 @@ export const state = () => ({
             label: 'Full Name',
             sort: true,
             // thClass: 'sortable',
+        }, {
+            key: 'gender',
+            label: 'Gender',
+            sort: true,
+            // thClass: 'sortable',
         },
         {
             key: 'created',
@@ -46,14 +61,13 @@ export const state = () => ({
             sort: true,
         },
         {
-            key: 'referral',
-            label: 'Tipe',
+            key: 'is_suku_ras',
+            label: 'RAS',
             sort: true,
         },
         {
-            key: 'refname',
-            label: 'Referral',
-            sort: true,
+            key: 'video_ref',
+            label: 'Video'
         },
         {
             key: 'role',
@@ -61,24 +75,17 @@ export const state = () => ({
             sort: true,
         },
         {
-            key: 'alamat_landing.provinsi',
-            label: 'Provinsi',
-            sort: true,
-        },
-        {
-            key: 'alamat_landing.kabupaten',
-            label: 'Kabupaten',
+            key: 'status',
+            label: 'Status',
             sort: true,
         },
         { key: 'whatsapp', label: 'Whatsapp', sort: true },
-        { key: 'status', label: 'Status', sort: true }, {
-            key: 'products',
-            label: 'Products',
-            sort: true,
-        },
         { key: 'edit', label: 'Edit' }
     ],
-    url: ''
+    url: '',
+    users: [],
+    landing_prov: '',
+    landing_kab: '',
 })
 
 export const mutations = {
@@ -87,6 +94,9 @@ export const mutations = {
     },
     SETUSER(state, { i, v }) {
         state.results[i] = v
+    },
+    SETLIBUR(state, { i, v }) {
+        state.users[i].showlanding = v
     },
     SELECTNONE(state) {
         state.results.map(x => {
@@ -142,6 +152,7 @@ export const actions = {
         await commit('SET', { k, v })
         return v
     },
+
     /**
      * get data
      */
@@ -160,6 +171,7 @@ export const actions = {
             const ds = data.results
             const wx = ds.map((x) => {
                 x.select = false
+                x.vid = extractHostname(x.video_ref)
                 return x
             })
 

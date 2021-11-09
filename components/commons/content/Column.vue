@@ -6,9 +6,9 @@
 )
     .insidebar.insdx(
         ref='insc',
-        style='overflow: hidden; min-width: 260px; scrollbar-width: thin',
+        style='overflow: hidden; scrollbar-width: thin',
         v-if='$slots.left',
-        :style='res.stl2'
+        :style='res.stl1'
     )
         slot(name='left')
 
@@ -22,11 +22,20 @@
 <script>
 import { defineComponent, onMounted, reactive, ref } from '@vue/composition-api'
 export default defineComponent({
-    setup() {
+    props: {
+        width: {
+            type: String,
+            default: '260px',
+        },
+    },
+    setup(props) {
         const insb = ref()
         const insc = ref()
         const res = reactive({
             stl: {},
+            stl1: {
+                'min-width': props.width,
+            },
             stl2: {},
         })
         onMounted(() => {
@@ -41,6 +50,13 @@ export default defineComponent({
                 }
 
                 const h2 = insc.value.getBoundingClientRect().top
+                res.stl1 = {
+                    height: `calc(${bh}px - ${h2}px)`,
+                    'overflow-y': 'auto',
+                    'scrollbar-width': 'thin',
+                    width: props.width,
+                }
+
                 res.stl2 = {
                     height: `calc(${bh}px - ${h2}px)`,
                     'overflow-y': 'auto',

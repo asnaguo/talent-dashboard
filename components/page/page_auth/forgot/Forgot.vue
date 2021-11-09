@@ -29,7 +29,7 @@
 
             //- button login
             .flex
-                b-button.px-4(block, variant='primary', @click='res.Reset') 
+                b-button.px-4(block, variant='primary', @click='res.Reset')
                     //- loading spinner
                     IconLoading.spin.ml-1(
                         height='18',
@@ -46,7 +46,7 @@
     .flex
         .text-left.pt-3.text-sm
             | Lupa password?
-            nuxt-link(to='/auth/login', target='_self')
+            nuxt-link(to='/login', target='_self')
                 span.pl-1.text-primary Login
 </template>
 <script>

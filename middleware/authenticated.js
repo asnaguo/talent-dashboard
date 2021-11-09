@@ -8,6 +8,6 @@ export default ({ app, redirect, store }) => {
 
     } else {
         app.store.commit('SET', { k: 'islogin', v: false })
-        redirect('/register')
+        redirect('/login')
     }
 }
